@@ -14,7 +14,7 @@ run_os_cmd(download_cmd,'Downloading Tableau Server Package...')
 install_cmd='yum -y install /tmp/tableau-server-2021-1-0.x86_64.rpm'
 run_os_cmd(install_cmd,'Installing Package...')
 
-initialize_cmd='/opt/tableau/tableau_server/packages/scripts*/initialize-tsm --accepteula -a aravind.bondili -d /data'
+initialize_cmd='/opt/tableau/tableau_server/packages/scripts.2021*/initialize-tsm --accepteula -a aravind.bondili -d /data'
 run_os_cmd(initialize_cmd,'Initializing TSM...')
 sourcing_cmd='source /etc/profile.d/tableau_server.sh'
 run_os_cmd(sourcing_cmd,'Sourcing tableau profile...')
