@@ -3,19 +3,21 @@ import base64
 
 
 def run_os_cmd(cmd, msg):
+    print("\n")
     print(msg)
     os.system(cmd)
 
     
-download_cmd='wget https://www.tableau.com/support/releases/server/2021.1 -P /tmp'
+download_cmd='wget https://downloads.tableau.com/esdalt/2021.1.0/tableau-server-2021-1-0.x86_64.rpm -P /tmp'
 run_os_cmd(download_cmd,'Downloading Tableau Server Package...')
 
-install_cmd='yum -y install /tmp/tableau-server*'
+install_cmd='yum -y install /tmp/tableau-server-2021-1-0.x86_64.rpm'
 run_os_cmd(install_cmd,'Installing Package...')
 
 initialize_cmd='/opt/tableau/tableau_server/packages/scripts*/initialize-tsm --accepteula -a aravind.bondili -d /data'
 run_os_cmd(initialize_cmd,'Initializing TSM...')
-run_os_cmd('source /etc/profile.d/tableau_server.sh','Sourcing tableau profile...')
+sourcing_cmd='source /etc/profile.d/tableau_server.sh'
+run_os_cmd(sourcing_cmd,'Sourcing tableau profile...')
 
 license_cmd='tsm licenses activate -t'
 run_os_cmd(license_cmd,'Activating Trial License...')
