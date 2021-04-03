@@ -1,9 +1,7 @@
-echo "Installing lvm2..."
-yum -y install lvm2
+yum -y install wget
 
 echo "Creating filesystem for data"
-pvcreate /dev/sdb
-mkfs.xfs /dev/sdb
+mkfs.xfs -f /dev/sdb
 echo "`blkid|grep sdb|awk '{print $2'}` /data              xfs    defaults        0 0" >> /etc/fstab
 mount /data
 
