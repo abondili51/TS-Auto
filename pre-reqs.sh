@@ -3,10 +3,8 @@ yum -y install lvm2
 
 echo "Creating filesystem for data"
 pvcreate /dev/sdb
-vgcreate -y datavg
-vgextend datavg /dev/sdb
 mkfs.xfs /dev/sdb
-echo "/dev/sdb /data              xfs    defaults        0 0" >> /etc/fstab
+echo "`blkid|grep sdb|awk '{print $2'}` /data              xfs    defaults        0 0" >> /etc/fstab
 mount /data
 
 echo "Opening 80 and 8850 ports..."
