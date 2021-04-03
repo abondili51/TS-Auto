@@ -1,14 +1,12 @@
 import os
 import base64
 
-def file_exists(file):
-
 
 def run_os_cmd(cmd, msg):
     print(msg)
     os.system(cmd)
 
-
+    
 download_cmd='wget https://www.tableau.com/support/releases/server/2021.1 -P /tmp'
 run_os_cmd(download_cmd,'Downloading Tableau Server Package...')
 
@@ -22,10 +20,10 @@ run_os_cmd('source /etc/profile.d/tableau_server.sh','Sourcing tableau profile..
 license_cmd='tsm licenses activate -t'
 run_os_cmd(license_cmd,'Activating Trial License...')
 
-register_cmd='tsm register --file /tmp/ts-auto-config/register.json'
+register_cmd='tsm register --file /tmp/ts-auto/config/register.json'
 run_os_cmd(register_cmd,'Registratering...')
 
-id_store_cmd='tsm settings import -f /tmp/ts-auto-config/id_store.json'
+id_store_cmd='tsm settings import -f /tmp/ts-auto/config/id_store.json'
 run_os_cmd(id_store_cmd,'Configuring ID store settings...')
 
 apply_changes='tsm pending-changes apply'
