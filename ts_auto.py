@@ -8,8 +8,8 @@ def run_os_cmd(cmd, msg):
     os.system(cmd)
 
 def run_pre_reqs():
-    yum_cmd='sudo yum -y install wget'
-    run_os_cmd(yum_cmd,"Installing wget...")
+    yum_cmd='sudo yum -y install wget python3'
+    run_os_cmd(yum_cmd,"Installing wget and python3...")
 
     fw_cmd1='sudo firewall-cmd --permanent --add-port=80/tcp'
     fw_cmd2='sudo firewall-cmd --permanent --add-port=8850/tcp'
