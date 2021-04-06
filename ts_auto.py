@@ -50,10 +50,9 @@ def start_ts():
     start_ts='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm initialize --start-server --request-timeout 1800'
     run_os_cmd(start_ts,'Initializing and Starting Tableau Server...')
 
-def add_admin(server_ip):
+def add_admin():
     pwd=base64.b64decode('YWRtaW4=').decode()
-    server='http://'+server_ip
-    add_admin=f"sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tabcmd initialuser --server {server} --username 'admin' --password {pwd}"
+    add_admin=f"sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tabcmd initialuser --server http://localhost --username 'admin' --password {pwd}"
     run_os_cmd(add_admin,'Adding admin account...')
     print('Admin account is successfully added!')
 
@@ -68,5 +67,5 @@ def main(server):
 
         
 if __name__ == '__main__':
-    server = sys.argv[1] if len(sys.argv)==1 else '35.211.112.6'
-    main(server)
+    #server = sys.argv[1] if len(sys.argv)==1 else '35.211.112.6'
+    main()
