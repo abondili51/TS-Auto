@@ -27,7 +27,7 @@ def download_install():
     run_os_cmd(install_cmd,'Installing Package...')
 
 def initialize():
-    initialize_cmd='/opt/tableau/tableau_server/packages/scripts.2021*/initialize-tsm --accepteula -a aravind.bondili'
+    initialize_cmd='/opt/tableau/tableau_server/packages/scripts.2021*/initialize-tsm -f --accepteula -a aravind.bondili'
     run_os_cmd(initialize_cmd,'Initializing TSM...')
     sourcing_cmd='source /etc/profile.d/tableau_server.sh'
     run_os_cmd(sourcing_cmd,'Sourcing tableau profile...')
