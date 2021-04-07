@@ -27,16 +27,16 @@ def download_install():
     run_os_cmd(install_cmd,'Installing Package...')
 
 def initialize():
-    initialize_cmd='/opt/tableau/tableau_server/packages/scripts.2021*/initialize-tsm -f --accepteula -a aravind.bondili'
+    initialize_cmd='sudo /opt/tableau/tableau_server/packages/scripts.2021*/initialize-tsm -f --accepteula -a aravind.bondili'
     run_os_cmd(initialize_cmd,'Initializing TSM...')
     sourcing_cmd='source /etc/profile.d/tableau_server.sh'
     run_os_cmd(sourcing_cmd,'Sourcing tableau profile...')
 
 def activate_register():
-    license_cmd='tsm licenses activate -t'
+    license_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm licenses activate -t'
     run_os_cmd(license_cmd,'Activating Trial License...')
 
-    register_cmd='/opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm register --file /tmp/ts-auto/config/register.json'
+    register_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm register --file /tmp/ts-auto/config/register.json'
     run_os_cmd(register_cmd,'Registratering...')
 
 def configure():
