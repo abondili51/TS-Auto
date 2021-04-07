@@ -56,14 +56,14 @@ def add_admin():
     run_os_cmd(add_admin,'Adding admin account...')
     print('Admin account is successfully added!')
 
-def main(server):
+def main():
     run_pre_reqs()
     download_install()
     initialize()
     activate_register()
     configure()
     start_ts()
-    add_admin(server)
+    add_admin()
 
         
 if __name__ == '__main__':
