@@ -20,10 +20,10 @@ def run_pre_reqs():
 
 
 def download_install():    
-    download_cmd='wget https://downloads.tableau.com/esdalt/2021.1.0/tableau-server-2021-1-0.x86_64.rpm -P /tmp'
+    download_cmd='wget https://downloads.tableau.com/esdalt/2021.2.8/tableau-server-2021-2-8.x86_64.rpm -P /tmp'
     run_os_cmd(download_cmd,'Downloading Tableau Server Package...')
 
-    install_cmd='yum -y install /tmp/tableau-server-2021-1-0.x86_64.rpm'
+    install_cmd='yum -y install /tmp/tableau-server-2021-2-8.x86_64.rpm'
     run_os_cmd(install_cmd,'Installing Package...')
 
 def initialize():
@@ -33,26 +33,26 @@ def initialize():
     run_os_cmd(sourcing_cmd,'Sourcing tableau profile...')
 
 def activate_register():
-    license_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm licenses activate -t'
+    license_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tsm licenses activate -t'
     run_os_cmd(license_cmd,'Activating Trial License...')
 
-    register_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm register --file /tmp/ts-auto/config/register.json'
+    register_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tsm register --file /tmp/ts-auto/config/register.json'
     run_os_cmd(register_cmd,'Registratering...')
 
 def configure():
-    id_store_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm settings import -f /tmp/ts-auto/config/id_store.json'
+    id_store_cmd='sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tsm settings import -f /tmp/ts-auto/config/id_store.json'
     run_os_cmd(id_store_cmd,'Configuring ID store settings...')
 
-    apply_changes='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm pending-changes apply'
+    apply_changes='sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tsm pending-changes apply'
     run_os_cmd(apply_changes,'Applying pending changes...')
 
 def start_ts():
-    start_ts='sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tsm initialize --start-server --request-timeout 1800'
+    start_ts='sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tsm initialize --start-server --request-timeout 1800'
     run_os_cmd(start_ts,'Initializing and Starting Tableau Server...')
 
 def add_admin():
     pwd=base64.b64decode('YWRtaW4=').decode()
-    add_admin=f"sudo /opt/tableau/tableau_server/packages/customer-bin.20211.21.0320.1853/tabcmd initialuser --server http://localhost --username 'admin' --password {pwd}"
+    add_admin=f"sudo /opt/tableau/tableau_server/packages/customer-bin.20*/tabcmd initialuser --server http://localhost --username 'admin' --password {pwd}"
     run_os_cmd(add_admin,'Adding admin account...')
     print('Admin account is successfully added!')
 
